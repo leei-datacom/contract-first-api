@@ -10,6 +10,37 @@ paths:
       responses:
         '200':
           description: OK
+  /customer/{id}:
+    get:
+      description: Get details of a customer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/customer'
+components:
+  schemas:
+    customer:
+      type: object
+      properties:
+        name:
+          type: string
+        creditLimit:
+          type: number
+          description: Maximum credit allowed in NZD
+      description: Customer
+      required:
+        - name
+        - creditLimit
  
 
 
