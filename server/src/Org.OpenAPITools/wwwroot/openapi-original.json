@@ -1,0 +1,71 @@
+{
+  "openapi" : "3.0.2",
+  "info" : {
+    "title" : "Lee's API",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "http://127.0.0.1:8080/v1"
+  } ],
+  "paths" : {
+    "/health" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/customer/{id}" : {
+      "get" : {
+        "description" : "Get details of a customer",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "minimum" : 1,
+            "type" : "integer"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/customer"
+                }
+              }
+            },
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "customer" : {
+        "description" : "Customer",
+        "example" : {
+          "name" : "name",
+          "creditLimit" : 0.8008281904610115
+        },
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "creditLimit" : {
+            "description" : "Maximum credit allowed in NZD",
+            "type" : "number"
+          }
+        },
+        "required" : [ "creditLimit", "name" ],
+        "type" : "object"
+      }
+    }
+  }
+}
