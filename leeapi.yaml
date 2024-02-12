@@ -27,6 +27,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/customer'
+  /customer:
+    post:
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+      summary: Create a new customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/customer'
+              description: New customer details
 components:
   schemas:
     customer:
