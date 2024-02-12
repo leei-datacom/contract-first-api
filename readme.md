@@ -15,10 +15,21 @@ Server side ASP.NET Core generator is called aspnetcore
 
 To get help for the generator options: `openapi-generator-cli config-help -g aspnetcore`
 
-To build ASP.NET server code: `openapi-generator-cli generate -i leeapi.yaml -g aspnetcore -o .\server --additional-properties aspnetCoreVersion=6.0`
+To generate ASP.NET server code: `openapi-generator-cli generate -i leeapi.yaml -g aspnetcore -o .\server --additional-properties aspnetCoreVersion=6.0`
 
 Note the server side generated code will not build if the API definition does not have any schemas defined.  The following line will need to be commented out of the controllers: `//using Org.OpenAPITools.Models;`
 
 To debug in VS Code open the program.cs file and press F5
+
+## Generating Client Side Code
+
+To generate C# client code: `openapi-generator-cli generate -i leeapi.yaml -g csharp -o .\client\csharp --additional-properties targetFramework=net8.0`
+
+See https://openapi-generator.tech/docs/generators/csharp/
+
+To generate Typescript client code: `openapi-generator-cli generate -i leeapi.yaml -g typescript -o .\client\typescript --additional-properties platform=browser`
+
+See https://openapi-generator.tech/docs/generators/typescript/
+
 
 
